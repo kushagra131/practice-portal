@@ -353,8 +353,8 @@ public class Sort {
 		//bubbleSort(array);
 		//insertionSort(array);
 		//mergeSort(array, 0, array.length-1);
-		//quickSort(array, 0, array.length-1);
-		heapSort(array);
+		quickSort(array, 0, array.length-1);
+		//heapSort(array);
 		
 	}
 
