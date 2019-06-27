@@ -277,16 +277,16 @@ public class Sort {
 		//Build a MaxHeap / MinHeap from Array
 		for(int i = size/2 - 1; i >= 0; i--){
 			
-			//maxHeapify(array, size, i); //for sorting in INCREASING order
-			minHeapify(array, size, i); //for sorting in DECREASING order
+			maxHeapify(array, size, i); //for sorting in INCREASING order
+			//minHeapify(array, size, i); //for sorting in DECREASING order
 		}
 		
-		//move last element to root and call MaxHeapify / MinHeapify
+		//move Root to Last and call MaxHeapify / MinHeapify
 		for(int i = size - 1; i >= 0; i--){
 			swap(array, 0, i); //move current root to end
 			
-			//maxHeapify(array, i, 0); //for sorting in INCREASING order
-			minHeapify(array, i, 0); //for sorting in DECREASING order
+			maxHeapify(array, i, 0); //for sorting in INCREASING order
+			//minHeapify(array, i, 0); //for sorting in DECREASING order
 		}
 		System.out.println("Sorted Array -> " + Arrays.toString(array));
 	}
@@ -337,12 +337,61 @@ public class Sort {
 		}
 	}
 	
+	//getMax() to get the maximum value element from array
+	public static int getMax(int[] array, int length){
+		int max = array[0];
+		for(int i = 1; i < length; i++){
+			if(array[i] > max)
+				max = array[i];
+		}
+		return max;
+	}
+	
+	//Radix Sort, internally uses Counting Sort Algorithm with O(N + K)
+	private static void radixSort(int[] array){
+		int max = getMax(array, array.length); // get max value element in array
+		
+		//for each exponents call Counting Sort
+		for(int exp = 1; max/exp > 0; exp *= 10){
+			countSort(array, array.length, exp);
+		}
+		System.out.println("Sorted Array -> " + Arrays.toString(array));
+	}
+	
+	//Counting Sort Algorithm
+	//TC = O(N + K)
+	//SC = O(N)
+	private static void countSort(int[] array, int length, int exp){
+		int[] output = new int[length]; // Output Array 
+		int[] count = new int[10]; // Count Array to maintain counts
+		
+		Arrays.fill(count, 0); // Fill the Count Array with 0's
+		
+		//Store the count of occurrences of each digit
+		for(int i = 0; i < length; i++)
+			count[(array[i]/exp) % 10]++;
+		
+		//Change the Count Array so it contains actual position of digits
+		for(int i = 1; i < count.length; i++)
+			count[i] = count[i] + count[i-1];
+		
+		//Build the Output Array
+		for(int i = length - 1; i >= 0; i--){
+			output[count[(array[i]/exp) % 10] - 1] = array[i];
+			count[(array[i]/exp) % 10]--; //Decrement the count at position
+		}
+		//Copy the Output Array to Original Array
+		for(int i = 0; i < length; i++){
+			array[i] = output[i];
+		}
+		
+	}
+	
 	
 	//Main()
 	public static void main(String[] args) {
-		int[] array = {63, 25, -12, 2, 22, 11, 19, 100, -1, 64};
+		int[] array = {63, 25, 12, 2, 22, 11, 19, 100, 1, 64};
 		//Object[] stringArray = {"GeeksforGeeks", "Practice.GeeksforGeeks",  "GeeksQuiz"}; 
-		String string = "GeeksforGeeks,123445,1111111";
 		
 		System.out.println("Unsorted Array -> " + Arrays.toString(array));
 		//System.out.println("Unsorted String Array --> " + Arrays.toString(stringArray));
@@ -353,9 +402,9 @@ public class Sort {
 		//bubbleSort(array);
 		//insertionSort(array);
 		//mergeSort(array, 0, array.length-1);
-		quickSort(array, 0, array.length-1);
+		//quickSort(array, 0, array.length-1);
 		//heapSort(array);
-		
+		radixSort(array);
 	}
 
 }
