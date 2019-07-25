@@ -114,7 +114,7 @@ public class Sort {
 	private static void mergeSort(int[] array, int left, int right){
 		if(left < right){
 			//calculate middle
-			int middle = (left + right)/2;
+			int middle = left + (right - left)/2;
 			System.out.println("Left=" + left + " Right=" + right + " Middle=" + middle);
 			
 			//recur for left part
@@ -192,7 +192,8 @@ public class Sort {
 		 * Without Tail Call Optimization
 		 */
 		/*if(left < right){
-			int pi = partition(array, left, right); //calculate the Partition Index and put pivot element at right place
+			int pi = partition(array, left, right); //calculate the Partition Index and 
+													//put pivot element at right place
 			System.out.println("PI=" + pi);
 			
 			//Recur for Left Half
@@ -281,7 +282,8 @@ public class Sort {
 			//minHeapify(array, size, i); //for sorting in DECREASING order
 		}
 		
-		//move Root to Last and call MaxHeapify / MinHeapify
+		//move Root to Last and call MaxHeapify / MinHeapify at root index
+		
 		for(int i = size - 1; i >= 0; i--){
 			swap(array, 0, i); //move current root to end
 			
@@ -373,7 +375,7 @@ public class Sort {
 		
 		//Change the Count Array so it contains actual position of digits
 		for(int i = 1; i < count.length; i++)
-			count[i] = count[i] + count[i-1];
+			count[i] = count[i-1] + count[i];
 		
 		//Build the Output Array
 		for(int i = length - 1; i >= 0; i--){

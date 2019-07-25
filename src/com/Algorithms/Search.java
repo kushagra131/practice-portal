@@ -7,7 +7,7 @@ public class Search {
 	
 	//Recursive approach for Binary Search, 
 	//TC = O(logN)
-	//SC = O(logN)
+	//SC = O(N), AuxSC = O(logN)
 	private static int binarySearch(int[] array, int left, int right, int element){
 		if(left <= right){
 			int mid = left + (right - left)/2;
@@ -27,7 +27,7 @@ public class Search {
 	
 	//Iterative approach for Binary Search, 
 	//TC = O(logN)
-	//SC = O(1)
+	//SC = O(N), AuxSC = O(1)
 	private static int binarySearch(int[] array, int element){
 		int left = 0, right = array.length-1;
 		
@@ -46,11 +46,11 @@ public class Search {
 	
 	//Jump Search falls between Linear Search and Binary Search
 	//TC = O(N^1/2)
-	//SC = O(1)
+	//SC = O(N), AuxSC = O(1)
 	private static int jumpSearch(int[] array, int x) 
     { 
         int n = array.length; 
-        int step = (int)Math.floor(Math.sqrt(n)); // Finding block size to be jumped 
+        int step = (int)Math.floor(Math.sqrt(n)); // Block size to be jumped, optimal is Square Root N
   
         // Finding the block where element is 
         // present (if it is present) 
@@ -64,7 +64,7 @@ public class Search {
         } 
   
         // Doing a linear search for x in block 
-        // beginning with prev. 
+        // beginning with prev.
         while (array[prev] < x) 
         { 
             prev++; 
@@ -83,7 +83,8 @@ public class Search {
     }
 	
 	//Interpolation Search better than Binary Search if elements are evenly distributed, 
-	//TC = Average -> O(log log N) Worst -> O(N), SC = O(1)
+	//TC = Average -> O(log log N), Worst -> O(N)
+	//SC = O(N), AuxSC = O(1)
 	private static int interpolationSearch(int[] array, int element){
 		int left = 0;
 		int right = array.length - 1;
@@ -110,8 +111,8 @@ public class Search {
 	
 	//Exponential Search
 	//TC = O(log N),
-	//SC = O(log N) for Recursive Binary Search
-	//SC = O(1) for Iterarive Binary Search
+	//SC = O(N), AuxSC = O(logN) for Recursive Binary Search
+	//SC = O(N), AuxSC = O(1) for Iterative Binary Search
 	private static int exponentialSearch(int[] array, int element){
 		if(array[0] == element)
 			return 0;
@@ -131,7 +132,7 @@ public class Search {
 	
 	//Recursive Ternary Search - variation of Binary Search, divides the array in 3 parts
 	//TC = O(log N)
-	//SC = O(log N)
+	//SC = O(N), AuxSC = O(log N)
 	private static int ternarySearch(int[] array, int left, int right, int element){
 		if(left <= right){
 			int mid1 = left + (right - left) / 3;
