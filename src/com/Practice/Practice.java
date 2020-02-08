@@ -15,6 +15,7 @@ public class Practice {
         // WRITE YOUR CODE HERE
 		Map<Character, Integer> map = new HashMap<Character, Integer>();
 		List<Integer> list = new ArrayList<Integer>();
+		
 		for(int i = 0; i < inputList.size(); i++){
 			if(map.containsKey(inputList.get(i))){
 				map.put(inputList.get(i), i);
@@ -28,13 +29,13 @@ public class Practice {
     }
 	
 	// METHOD SIGNATURE BEGINS, THIS METHOD IS REQUIRED
-	private static List<Integer> IDsOfSongs(int rideDuration, 
-	                              List<Integer> songDurations)
+	private static List<Integer> IDsOfSongs(int rideDuration, List<Integer> songDurations)
 	{
 		// WRITE YOUR CODE HERE
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		Map <Integer, Integer> map = new HashMap<Integer, Integer>();
 		int target = rideDuration - 30;
+		
 		for(int i = 0; i < songDurations.size(); i++){
 		    
 		    int compliment = target - songDurations.get(i);
@@ -73,7 +74,6 @@ public class Practice {
 		
 		//Practice obj = new Practice();
 		System.out.println("List->> "+ list);
-		
 		System.out.println(IDsOfSongs(rideDuration, list));
 		
 		System.out.println("Ch List ->> " + chList);
