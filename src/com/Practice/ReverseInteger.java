@@ -61,8 +61,7 @@ public class ReverseInteger {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int x = 98765;
-		//ReverseInteger obj = new ReverseInteger();
-		//int reverseNum = obj.reverse(x);
+		// ReverseInteger obj = new ReverseInteger();
 		int reverseNum = reverseNum(x);
 		System.out.print("Reverse Number -> " + reverseNum);
 	}
