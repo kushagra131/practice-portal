@@ -6,55 +6,27 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 //User Built Stack Class
-public class Stacks {
-	static Stack<Integer> stack = new Stack<Integer>();
-	
-	static void stack_push(Stack<Integer> stack, int data){
-		stack.push(data);
+public class Stacks<T> {
+	int top = 0;
+
+	private void push(int data){
+
 	}
 	
-	static void stack_pop(Stack<Integer> stack){
-		if(stack.isEmpty()){
-			System.out.println("Stack Underflow!!");
-			return;
-		}
-		
-		Integer element = (Integer)stack.pop();
-		System.out.println("Pop: " + element);
+	private void pop(){
+
 	}
 	
-	static void stack_isEmpty(Stack<Integer> stack){
-		if(!stack.isEmpty()){
-			System.out.println("Stack Empty!!");
-			return;
-		}
-		
-		System.out.println("Stack Not Empty!!");
+	private boolean isEmpty(Stack<T> stack){
+		return (stack.isEmpty()) ? true : false;
 	}
 	
-	static void stack_peek(Stack<Integer> stack){
-		if(stack.isEmpty()){
-			System.out.println("Stack Empty!!");
-			return;
-		}
-		Integer top = (Integer)stack.peek();
-		System.out.println("Peek: " + top);
-	}
-	
-	static void stack_search(Stack<Integer> stack, int element){
-		if(!stack.isEmpty()){
-			Integer pos = stack.search((Integer)element);
-			if(pos == -1)
-				System.out.println("Element Not Found");
-			else
-				System.out.println("Element at Index: " + pos);
-		}
-		else
-			System.out.println("Stack Underflow!!");
+	private void peek(Stack<T> stack){
+
 	}
 	
 	public static void main(String[] args){
-		/*stack_peek(stack);
+		/* stack_peek(stack);
 		stack_push(stack, 10);
 		stack_push(stack, 20);
 		stack_push(stack, 80);
