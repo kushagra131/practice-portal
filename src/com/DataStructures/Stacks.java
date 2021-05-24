@@ -8,6 +8,14 @@ import java.util.LinkedList;
 //User Built Stack Class
 public class Stacks<T> {
 	int top = 0;
+	Object[] array = null;
+	int arrayLength = 0;
+
+	Stacks(Object[] array) {
+		this.array = new Object[array.length];
+		this.array = array;
+		this.arrayLength = array.length;
+	}
 
 	private void push(int data){
 
