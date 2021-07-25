@@ -111,19 +111,19 @@ public class Sort {
 	//MergeSort -> Divide & Conquer Algorithm
 	//TC = O(N logN)
 	//SC = O(N), AuxSpace = O(N)
-	private static void mergeSort(int[] array, int left, int right){
-		if(left < right){
+	private static void mergeSort(int[] array, int low, int high){
+		if(low < high){
 			//calculate middle
-			int middle = left + (right - left)/2;
-			System.out.println("Left=" + left + " Right=" + right + " Middle=" + middle);
+			int middle = low + (high - low)/2;
+			System.out.println("Left=" + low + " Right=" + high + " Middle=" + middle);
 			
 			//recur for left part
-			mergeSort(array, left, middle);
+			mergeSort(array, low, middle);
 			//recur for right part
-			mergeSort(array, middle+1, right);
+			mergeSort(array, middle+1, high);
 			
 			//merge the 2 halves
-			merge(array, left, middle, right);
+			merge(array, low, middle, high);
 		}
 	}
 	
@@ -188,9 +188,8 @@ public class Sort {
 	private static void quickSort(int[] array, int left, int right){
 		System.out.println("Left=" + left + " Right=" + right);
 		
-		/*
-		 * Without Tail Call Optimization
-		 */
+
+		 // Without Tail Call Optimization
 		/*if(left < right){
 			int pi = partition(array, left, right); //calculate the Partition Index and 
 													//put pivot element at right place
@@ -203,9 +202,7 @@ public class Sort {
 			quickSort(array, pi+1, right);
 		}*/
 		
-		/*
-		 * Tail Call Optimization
-		 */
+		// Tail Call Optimization
 		while(left < right){
 			//calculate Partition Index and put pivot in correct position, 
 			//selects Last Element as Pivot

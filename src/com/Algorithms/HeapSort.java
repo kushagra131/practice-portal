@@ -2,16 +2,16 @@ package com.Algorithms;
 
 import java.util.Arrays;
 
-public class HeapSort {
+class HeapSort {
 	
 	//swapper()
-	void swap(int[] array, int i, int j){
+	private void swap(int[] array, int i, int j){
 		int temp = array[i];
 		array[i] = array[j];
 		array[j] = temp;
 	}
 	
-	void heapSort(int[] array){
+	public void heapSort(int[] array){
 		int n = array.length;
 		
 		//build MaxHeap of all subTrees from bottom-up
@@ -25,7 +25,7 @@ public class HeapSort {
 		}
 	}
 	
-	void maxHeapify(int[] array, int n, int index){
+	public void maxHeapify(int[] array, int n, int index){
 		int l = 2*index + 1;
 		int r = 2*index + 2;
 		int largest = index;

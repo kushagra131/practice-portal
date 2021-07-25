@@ -16,7 +16,7 @@ public class RandomizedQuickSort {
 	int randomizedPartition(int[] array, int low, int high){
 		
 		int n = high - low + 1;
-		int randomPivot = (int)(Math.random()) * (n-1);//random pivot
+		int randomPivot = (int)(Math.random() * (n-1));//random pivot
 		System.out.println("Random Pivot Index -> " + randomPivot);
 		
 		//swap array[high] with with array[low + pivot]
@@ -33,21 +33,20 @@ public class RandomizedQuickSort {
 		int pivot = array[high];
 		System.out.println("Pivot Element -> " + pivot);
 		
-		int i = low;
-		for(int j = low; j <= high-1; j++){
+		int i = low - 1;
+		for(int j = low; j < high; j++){
 			//swap every element smaller than pivot
 			if(array[j] <= pivot){
-				swap(array, i, j);
 				i++;
+				swap(array, i, j);
 				System.out.println("i -> " + i + " j -> " + j + " Swap");
 			}
 		}
-		
 		//swap element greater than pivot
-		swap(array, i, high);
+		swap(array, i + 1, high);
 		System.out.println("Array -> " + Arrays.toString(array) + "\n");
 		
-		return (i);
+		return (i + 1);
 	}
 	
 	void randomizedQuickSort(int[] array, int low, int high){

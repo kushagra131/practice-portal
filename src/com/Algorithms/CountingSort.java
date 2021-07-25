@@ -21,13 +21,13 @@ public class CountingSort {
 		for(int i = 0; i < length; i++)
 			count[array[i]] = count[array[i]] + 1; 
 		
-		System.out.println("Count[] ->   " + Arrays.toString(count));
+		System.out.println("Count[] -> " + Arrays.toString(count));
 		
 		//modify the count[] by adding the previous counts
 		for(int i = 1; i < count.length; i++)
 			count[i] = count[i-1] + count[i];
 		
-		System.out.println("MDCount[] -> " + Arrays.toString(count));
+		System.out.println("Count[] -> " + Arrays.toString(count));
 		
 		//place the items in the correct position in outputArr[] and decrease the count by 1 in count[]
 		for(int i = 0; i < length; i++){
@@ -49,7 +49,7 @@ public class CountingSort {
 		System.out.println("Array -> " + Arrays.toString(array));
 		CountingSort obj = new CountingSort();
 		obj.sort(array);
-		System.out.println("Sorted Array -> " + Arrays.toString(array));
+		System.out.println("Sorted[] -> " + Arrays.toString(array));
 
 	}
 

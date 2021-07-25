@@ -1,82 +1,85 @@
 package com.Practice;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-// IMPORT LIBRARY PACKAGES NEEDED BY YOUR PROGRAM
-// SOME CLASSES WITHIN A PACKAGE MAY BE RESTRICTED
-// DEFINE ANY CLASS AND METHOD NEEDED
-// CLASS BEGINS, THIS CLASS IS REQUIRED
-public class Practice {
-	
-	private static List<Integer> lengthSubsequenceShoppers(List<Character> inputList)
-    {
-        // WRITE YOUR CODE HERE
-		Map<Character, Integer> map = new HashMap<Character, Integer>();
-		List<Integer> list = new ArrayList<Integer>();
-		
-		for(int i = 0; i < inputList.size(); i++){
-			if(map.containsKey(inputList.get(i))){
-				map.put(inputList.get(i), i);
-				list.add(i+1);
-			}
-			else
-				map.put(inputList.get(i), 1);
-		}
-		System.out.println("CH MAP ->> " + map);
-		return list;
+import java.util.*;
+
+class Practice {
+    static String word = "Hello";
+    static int[] arr = {11, 10, 20, 8, 1, 90, 55, 50, 45};
+
+    public static void main(String[] args) {
+
+        // System.out.println("String Reversed -> " + reverse(word));
+        kthLargestElement(arr, 3);
+        // System.out.println(Arrays.toString(kSort(arr, 4)));
     }
-	
-	// METHOD SIGNATURE BEGINS, THIS METHOD IS REQUIRED
-	private static List<Integer> IDsOfSongs(int rideDuration, List<Integer> songDurations)
-	{
-		// WRITE YOUR CODE HERE
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		Map <Integer, Integer> map = new HashMap<Integer, Integer>();
-		int target = rideDuration - 30;
-		
-		for(int i = 0; i < songDurations.size(); i++){
-		    
-		    int compliment = target - songDurations.get(i);
-		    if(map.containsKey(compliment) && list.size() < 2){
-		        list.add(map.get(compliment));
-		        list.add(i);
-		    }
-		    map.put(songDurations.get(i), i);
-		        
-		}
-		System.out.println("MAP->> " + map);
-		return list;
-	}
-	// METHOD SIGNATURE ENDS
-	public static void main(String[] args){
-		int rideDuration = 90;
-		List<Integer> list = new ArrayList<Integer>();
-		list.add(1);
-		list.add(10);
-		list.add(25);
-		list.add(35);
-		list.add(50);
-		//list.add(35);
-		
-		List<Character> chList = new ArrayList<Character>();
-		chList.add('a');
-		chList.add('b');
-		chList.add('c');
-		chList.add('a');
-		chList.add('a');
-		chList.add('b');
-		chList.add('c');
-		chList.add('a');
-		//list.add(50);
-		
-		
-		//Practice obj = new Practice();
-		System.out.println("List->> "+ list);
-		System.out.println(IDsOfSongs(rideDuration, list));
-		
-		System.out.println("Ch List ->> " + chList);
-		System.out.println(lengthSubsequenceShoppers(chList));
-	}
+
+    static String reverse(String word) {
+        char[] arr = null;
+        if(word == null || word.length() == 0) {
+            return new String("String cannot be reversed");
+        }
+        else {
+            int low = 0, high = word.length() - 1;
+            arr = word.toCharArray();
+            while(low < high) {
+                swap(arr, low, high);
+
+                low++;
+                high--;
+            }
+        }
+        return new String(arr);
+    }
+
+    // Swapper()
+    static void swap(char[] arr, int low, int high) {
+        char temp = arr[low];
+        arr[low] = arr[high];
+        arr[high] = temp;
+    }
+
+    static void kthLargestElement(int[] arr, int k) {
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>();
+
+        for(int i = 0; i < k; i++) {
+            maxHeap.add(arr[i]);
+        }
+
+        for(int i = k; i < arr.length; i++) {
+            if(maxHeap.peek() > arr[i]) {
+                continue;
+            }
+            else{
+                maxHeap.poll();
+                maxHeap.add(arr[i]);
+            }
+        }
+        Iterator<Integer> itr = maxHeap.iterator();
+        while(itr.hasNext()) {
+            System.out.print(itr.next() + " ");
+        }
+        System.out.println();
+        System.out.println("kth Largest Element -> " + maxHeap.peek());
+    }
+
+    static int[] kSort(int[] arr, int k) {
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        for(int i = 0; i < k + 1; i++) {
+            minHeap.add(arr[i]);
+        }
+        int index = 0;
+        for(int i = k + 1; i < arr.length; i++) {
+            arr[index++] = minHeap.peek();
+            minHeap.poll();
+            minHeap.add(arr[i]);
+        }
+
+        Iterator<Integer> itr = minHeap.iterator();
+        while(itr.hasNext()) {
+            arr[index++] = minHeap.peek();
+            minHeap.poll();
+        }
+        return arr;
+    }
 }

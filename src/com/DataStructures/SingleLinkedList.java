@@ -4,120 +4,98 @@ import java.util.HashSet;
 
 import com.DataStructures.LinkedList.Node;
 
-public class SingleLinkedList {
+class SingleLinkedList {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		LinkedList list = new LinkedList();
 		
-		// --->> Calls for Stack Build
-		/*list.push(5);
-		list.push(10);
-		list.push(1);
-		list.push(22);
-		list.push(100);
-		list.printList();
-		list.pop();
-		list.printList();
-		list.push(1111);
-		list.printList();
-		list.pop();
-		list.printList();
-		list.pop();
-		list.printList();
-		list.pop();
-		list.printList();
-		list.pop();
-		list.printList();
-		list.pop();
-		list.printList();
-		list.push(100);
-		list.printList();*/
-		
-		// --->> Calls for Queue Build
-		/*list.enQueue(6);
-		list.enQueue(1);
-		list.enQueue(3);
-		list.enQueue(77);
-		list.enQueue(100);
-		list.printList();
-		list.deQueue();
-		list.printList();
-		list.deQueue();
-		list.printList();*/
-		
-		// ---> Call for append() & delete element in LinkedList
-		list.printList(list.head);
-		list.append(list.head, 10);
-		list.append(list.head, 20);
-		list.append(list.head, 31);
-		list.append(list.head, 45);
-		list.append(list.head, 53);
-		list.append(list.head, 40);
-		list.append(list.head, 30);
-		list.append(list.head, 27);
-		list.append(list.head, 10);
-		//list.append(list.head, 60);
-		list.printList(list.head);
-		//list.insertAfter(3, 100);
-		//list.printList(list.head);
-		//list.deleteElement(100);
-		//list.printList();
-		//list.deleteAtPosition(4);
-		//list.printList();
-		list.search(60);
-		list.getNth(5);
-		Node mid = list.midElement(list.head);
-		//Node mid = list.getMiddle(list.head);
-		System.out.println("Mid Element -> " + mid.data);
-		//System.out.println("Count -> " + list.countElement(list.head, 100) + "\n");
-		//list.head.next.next.next.next = list.head; //----->> created a loop
-		//list.detectLoop(list.head);
-		//list.reverse(list.head);
-		//list.reverseRecursive(list.head, null);
-		//list.printList(list.head);
-		//list.reverseRecursive(list.head, null);
-		//list.printList(list.head);
-		//System.out.println("Length of Loop -> " + list.loopLength(list.head));
-		list.deleteEven(list.head);
-		
-		list.printList(list.head);
-		//Node sortedList = list.mergeSort(list.head);
-		
-		/*list.append(list.head, 'a');
-		list.append(list.head, 'b');
-		list.append(list.head, 'c');
-		list.append(list.head, 'd');
-		list.append(list.head, 'e');
-		list.append(list.head, 'e');
-		list.append(list.head, 'd');
-		list.append(list.head, 'c');
-		list.append(list.head, 'b');
-		list.append(list.head, 'a');
-		list.printList(list.head);*/
-		//list.isPalindrome(list.head);
+//		// Calls for Stack Build
+//		list.push(5);
+//		list.push(10);
+//		list.push(1);
+//		list.push(22);
+//		list.push(100);
+//
+//		// Calls for Queue Build
+//		list.enQueue(6);
+//		list.enQueue(1);
+//		list.enQueue(3);
+//		list.enQueue(77);
+//		list.enQueue(100);
+//
+//		// Call for append() & delete element in LinkedList
+//		list.printList(list.head);
+//		list.append(list.head, 10);
+//		list.append(list.head, 20);
+//		list.append(list.head, 31);
+//		list.append(list.head, 45);
+//		list.append(list.head, 53);
+//		list.append(list.head, 40);
+//		list.append(list.head, 30);
+//		list.append(list.head, 27);
+//		list.append(list.head, 10);
+//		list.append(list.head, 60);
+//		list.printList(list.head);
+//		list.insertAfter(3, 100);
+//		list.printList(list.head);
+//		list.deleteElement(100);
+//		list.printList();
+//		list.deleteAtPosition(4);
+//		list.printList();
+//		list.search(60);
+//		list.getNth(5);
+//		Node mid = list.midElement(list.head);
+//		Node mid = list.getMiddle(list.head);
+//		System.out.println("Mid Element -> " + mid.data);
+//		System.out.println("Count -> " + list.countElement(list.head, 100) + "\n");
+//		list.head.next.next.next.next = list.head; //----->> created a loop
+//		list.detectLoop(list.head);
+//		list.reverse(list.head);
+//		list.reverseRecursive(list.head, null);
+//		list.printList(list.head);
+//		list.reverseRecursive(list.head, null);
+//		list.printList(list.head);
+//		System.out.println("Length of Loop -> " + list.loopLength(list.head));
+//		list.deleteEven(list.head);
+//
+//		list.printList(list.head);
+//		Node sortedList = list.mergeSort(list.head);
+//
+//		list.append(list.head, 'a');
+//		list.append(list.head, 'b');
+//		list.append(list.head, 'c');
+//		list.append(list.head, 'd');
+//		list.append(list.head, 'e');
+//		list.append(list.head, 'e');
+//		list.append(list.head, 'd');
+//		list.append(list.head, 'c');
+//		list.append(list.head, 'b');
+//		list.append(list.head, 'a');
+//		list.printList(list.head);*/
+//		list.isPalindrome(list.head);
 	}
 
 }
 
-class LinkedList{
+class LinkedList {
 	
-	class Node{
+	class Node {
 		protected Node next;
 		protected Object data;
 		
 		//constructor
-		Node(){
+		Node() {
 			this.next = null;
 			this.data = 0;
 		}
 		
-		Node(Object data){
+		Node(Object data) {
 			this.next = null;
 			this.data = data;
 		}
 		
-		Node(Node next, Object data){
+		Node(Node next, Object data) {
 			this.next = next;
 			this.data = data;
 		}
@@ -128,7 +106,7 @@ class LinkedList{
 	int size;
 	int count;
 	
-	LinkedList(){
+	LinkedList() {
 		this.head = null;
 		this.tail = null;
 		this.size = 0;
