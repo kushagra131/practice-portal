@@ -7,10 +7,24 @@ public interface CodingInterface {
     /**
      * default()
      */
-    default void defaultMethod() {
-        System.out.println("Default() Coding Interface");
+    public default String defaultMethod() {
+        return "Default() Invoked";
     }
 
+    /**
+     * static()
+     * @param msg
+     * @return
+     */
+    public static String sayHi(String msg) {
+        return msg;
+    }
+
+    /**
+     * Length of String subsequence
+     * @param inputList
+     * @return
+     */
     List<Integer> lengthSubsequenceShoppers(List<Character> inputList);
 
     /**

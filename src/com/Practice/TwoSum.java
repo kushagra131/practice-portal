@@ -15,9 +15,9 @@ class TwoSum {
         for(int i = 0; i < nums.length; i++){
         	
             int compliment = target - nums[i];
-			System.out.println(Arrays.toString(nums));
-            System.out.println("Target -> " + target);
-            System.out.println("Compliment -> " + target + " - " + nums[i] + " = " + compliment);
+//			System.out.println(Arrays.toString(nums));
+//            System.out.println("Target -> " + target);
+//            System.out.println("Compliment -> " + target + " - " + nums[i] + " = " + compliment);
             
             if(map.containsKey(compliment))
                 return new int[] { map.get(compliment), i };

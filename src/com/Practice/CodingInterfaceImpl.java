@@ -1,6 +1,7 @@
 package com.Practice;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 class CodingInterfaceImpl implements CodingInterface{
 
@@ -27,15 +28,15 @@ class CodingInterfaceImpl implements CodingInterface{
             if(map.containsKey(compliment)){
                 list.add(map.get(compliment));
                 list.add(i);
-                // return list;
+                return list;
             }
             map.put(songDurations.get(i), i);
             i++;
             map.forEach((k, v) -> System.out.print(k + ": " + v + ", "));
             System.out.println();
 
-        } // throw new IllegalArgumentException("\n" + "ID's not found!!");
-        return list;
+        } throw new IllegalArgumentException("\n" + "ID's not found!!");
+        // return list;
     }
 
     /**
@@ -206,7 +207,7 @@ class CodingInterfaceImpl implements CodingInterface{
         int[] numbers = {1, 12, 99, 100, 23, 37, 43, 30, 15, 30, 19, 210};
         int[] binaryArr = {1, 1, 0, 0, 0, 1};
 
-        CodingInterfaceImpl obj = new CodingInterfaceImpl();
+        CodingInterface obj = new CodingInterfaceImpl();
 //        try {
 //            System.out.println(obj.IDsOfSongs(90, songsDuration));
 //        }
