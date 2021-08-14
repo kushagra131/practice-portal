@@ -10,10 +10,12 @@ public class Practice {
 
     public static void main(String[] args) {
         Practice obj = new Practice();
-        // System.out.println("String Reversed -> " + obj.reverse(word));
-        System.out.println("kth Largest Element -> " + obj.kthLargestElement(arr, 3));
-        System.out.println("kth Smallest Element -> " + obj.kthSmallestElement(arr, 3));
-        // System.out.println(Arrays.toString(obj.kSort(arr, 4)));
+//        System.out.println("String Reversed -> " + obj.reverse(word));
+//        System.out.println("kth Largest Element -> " + obj.kthLargestElement(arr, 3));
+//        System.out.println("kth Smallest Element -> " + obj.kthSmallestElement(arr, 3));
+//        System.out.println("k Sort -> " + Arrays.toString(obj.kSort(arr, 4)));
+        System.out.println("First 2 indices -> " + Arrays.toString(obj.twoSum(new int[]{1,6,7,0,8,4,3}, 7)));
+        System.out.println("Indices -> " + obj.indices(Arrays.asList(1,6,7,0,8,4,3,2,4), 6));
     }
 
     public String reverse(String word) {
@@ -110,5 +112,37 @@ public class Practice {
             minHeap.poll();
         }
         return arr;
+    }
+
+    public int[] twoSum(int[] arr, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for(int i = 0; i < arr.length; i++) {
+            int compliment = target - arr[i];
+            if(map.containsKey(compliment))
+                return new int[]{map.get(compliment), i};
+            else
+                map.put(arr[i], i);
+        }
+        return null;
+    }
+
+    public List<Integer> indices(List<Integer> list, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        List<Integer> indices = new ArrayList<>();
+
+        int i = 0;
+        while(i < list.size()) {
+            int compliment = target - list.get(i);
+
+            if(map.containsKey(compliment)) {
+                indices.add(map.get(compliment));
+                indices.add(i);
+            }
+            else
+                map.put(list.get(i), i);
+            i++;
+        }
+        return indices;
     }
 }

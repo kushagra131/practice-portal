@@ -5,6 +5,39 @@ import java.util.stream.Collectors;
 
 class CodingInterfaceImpl implements CodingInterface{
 
+    public static void main(String[] args) {
+        List<Integer> songsDuration = new ArrayList<>();
+        songsDuration.add(1);
+        songsDuration.add(20);
+        songsDuration.add(35);
+        songsDuration.add(25);
+        songsDuration.add(59);
+        songsDuration.add(60);
+        int[] numbers = {1, 12, 99, 100, 23, 37, 43, 30, 15, 30, 19, 210};
+        int[] binaryArr = {1, 1, 0, 0, 0, 1};
+
+        CodingInterface obj = new CodingInterfaceImpl();
+//        try {
+//            System.out.println(obj.IDsOfSongs(90, songsDuration));
+//        }
+//        catch(IllegalArgumentException e) {
+//            System.out.println(e.getMessage());
+//        }
+
+//        for(int i=0; i < numbers.length; i++) {
+//    		System.out.println("number -> " + numbers[i] + ", " + obj.isUgly(numbers[i]));
+//			System.out.println("-------------------------");
+//		  }
+
+//        System.out.println(obj.isPalindrome("abcba"));
+//        System.out.println(obj.changeToAnandrome("abaab"));
+//        System.out.println(maxConsecutiveOnes(binaryArr));
+//		  Scanner scanner = new Scanner(System.in);
+//		  System.out.print("Enter a number for Fibonacci Series -> ");
+//		  int n = scanner.nextInt();
+//		  fib(n);
+    }
+
     public List<Integer> lengthSubsequenceShoppers(List<Character> inputList)
     {
         List<Integer> list = new ArrayList<>();
@@ -32,9 +65,8 @@ class CodingInterfaceImpl implements CodingInterface{
             }
             map.put(songDurations.get(i), i);
             i++;
-            map.forEach((k, v) -> System.out.print(k + ": " + v + ", "));
-            System.out.println();
-
+//            map.forEach((k, v) -> System.out.print(k + ": " + v + ", "));
+//            System.out.println();
         } throw new IllegalArgumentException("\n" + "ID's not found!!");
         // return list;
     }
@@ -163,69 +195,32 @@ class CodingInterfaceImpl implements CodingInterface{
      * @return
      */
     public int maxConsecutiveOnes(int[] arr) {
-        int startPtr = 0;
-        int endPtr = 0;
-        int prevCount = 0;
-        int currCount = 0;
-        int maxCount = Integer.MIN_VALUE;
+        int start_ptr = 0;
+        int end_ptr = 0;
+        int prev_count = 0;
+        int curr_count = 0;
+        int max_count = Integer.MIN_VALUE;
 
         int i = 0;
         while(i < arr.length) {
-            if(arr[startPtr] != 1 && arr[endPtr] != 1) {
+            if(arr[start_ptr] != 1 && arr[end_ptr] != 1) {
                 i++;
-                endPtr = i;
-                startPtr = i;
+                end_ptr = i;
+                start_ptr = i;
             }
-            else if(arr[startPtr] == 1 && arr[endPtr] == 1) {
-                currCount++;
+            else if(arr[start_ptr] == 1 && arr[end_ptr] == 1) {
+                curr_count++;
                 i++;
-                endPtr = i;
+                end_ptr = i;
             }
             else {
-                startPtr = endPtr;
-                prevCount = currCount;
-                if(maxCount <= prevCount)
-                    maxCount = prevCount;
-                currCount = 0;
+                start_ptr = end_ptr;
+                prev_count = curr_count;
+                if(max_count <= prev_count)
+                    max_count = prev_count;
+                curr_count = 0;
             }
         }
-        return (maxCount <= currCount) ? currCount : maxCount;
-    }
-
-    /**
-     * Main()
-     * @param args
-     */
-    public static void main(String[] args) {
-        List<Integer> songsDuration = new ArrayList<>();
-        songsDuration.add(1);
-        songsDuration.add(20);
-        songsDuration.add(35);
-        songsDuration.add(25);
-        songsDuration.add(59);
-        songsDuration.add(60);
-        int[] numbers = {1, 12, 99, 100, 23, 37, 43, 30, 15, 30, 19, 210};
-        int[] binaryArr = {1, 1, 0, 0, 0, 1};
-
-        CodingInterface obj = new CodingInterfaceImpl();
-//        try {
-//            System.out.println(obj.IDsOfSongs(90, songsDuration));
-//        }
-//        catch(IllegalArgumentException e) {
-//            System.out.println(e.getMessage());
-//        }
-
-//        for(int i=0; i < numbers.length; i++) {
-//    		System.out.println("number -> " + numbers[i] + ", " + obj.isUgly(numbers[i]));
-//			System.out.println("-------------------------");
-//		  }
-
-//        System.out.println(obj.isPalindrome("abcba"));
-//        System.out.println(obj.changeToAnandrome("abaab"));
-//        System.out.println(maxConsecutiveOnes(binaryArr));
-//		  Scanner scanner = new Scanner(System.in);
-//		  System.out.print("Enter a number for Fibonacci Series -> ");
-//		  int n = scanner.nextInt();
-//		  fib(n);
+        return (max_count <= curr_count) ? curr_count : max_count;
     }
 }

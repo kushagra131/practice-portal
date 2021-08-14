@@ -1,11 +1,14 @@
 package com.Coding;
 
+import sun.lwawt.macosx.CSystemTray;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 
 public class CodingLambdas {
@@ -27,7 +30,12 @@ public class CodingLambdas {
         });
 
         // performConditionally(people, p -> p.getFirstName().startsWith("K"), p -> System.out.println(p));
-        performConditionally(people, p -> true, p -> System.out.println(p));
+        performConditionally(people, p -> p.getAge() > 50, p -> System.out.println(p));
+
+        Stream<Person> stream = people.stream().filter(p -> {
+            return p.getAge() < 50;
+        });
+        stream.forEach(p -> System.out.println(p));
     }
 
 
