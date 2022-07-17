@@ -32,9 +32,9 @@ public class CodingLambdas {
         // performConditionally(people, p -> p.getFirstName().startsWith("K"), p -> System.out.println(p));
         performConditionally(people, p -> p.getAge() > 50, p -> System.out.println(p));
 
-        Stream<Person> stream = people.stream().filter(p -> {
-            return p.getAge() < 50;
-        });
+        Stream<Person> stream = people.stream()
+                                    .filter(p -> p.getAge() < 50);
+
         stream.forEach(p -> System.out.println(p));
     }
 

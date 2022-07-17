@@ -58,7 +58,7 @@ public class Search {
         while (array[Math.min(step, n)-1] < x) 
         { 
             prev = step; 
-            step += (int)Math.floor(Math.sqrt(n)); 
+            step = step + (int)Math.floor(Math.sqrt(n));
             if (prev >= n) 
                 return -1; 
         } 

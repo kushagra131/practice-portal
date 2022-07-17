@@ -1,6 +1,9 @@
 package com.Practice;
 
+import jdk.nashorn.internal.runtime.regexp.RegExp;
+
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 class CodingInterfaceImpl implements CodingInterface{
@@ -29,7 +32,8 @@ class CodingInterfaceImpl implements CodingInterface{
 //			System.out.println("-------------------------");
 //		  }
 
-//        System.out.println(obj.isPalindrome("abcba"));
+//        System.out.println(obj.isPalindrome("  ab cb a  "));
+        System.out.println(obj.longestPalindromicSubsequence("rdbfgbaaa"));
 //        System.out.println(obj.changeToAnandrome("abaab"));
 //        System.out.println(maxConsecutiveOnes(binaryArr));
 //		  Scanner scanner = new Scanner(System.in);
@@ -38,10 +42,24 @@ class CodingInterfaceImpl implements CodingInterface{
 //		  fib(n);
     }
 
-    public List<Integer> lengthSubsequenceShoppers(List<Character> inputList)
-    {
-        List<Integer> list = new ArrayList<>();
-        return list;
+    public String longestPalindromicSubsequence(String word) {
+        Set<String> set = new HashSet<>();
+        for(int i=0; i < word.length(); i++) {
+            for(int j=i+1; j <= word.length(); j++) {
+                set.add(word.substring(i,j));
+            }
+        }
+        int length = Integer.MIN_VALUE;
+        String longestPalindromicSubsequence = "";
+
+        for(String element : set) {
+            if(isPalindrome(element) && length < element.length()) {
+                length = element.length();
+                longestPalindromicSubsequence = element;
+            }
+        }
+
+        return longestPalindromicSubsequence;
     }
 
     /**
@@ -50,7 +68,7 @@ class CodingInterfaceImpl implements CodingInterface{
      * @param songDurations
      * @return indices of numbers
      */
-    public List<Integer> iDsOfSongs(int rideDuration, List<Integer> songDurations) throws IllegalArgumentException {
+    public List<Integer> iDsOfSongs(int rideDuration, List<Integer> songDurations) {
         // WRITE YOUR CODE HERE
         List<Integer> list = new ArrayList<>();
         Map<Integer, Integer> map = new HashMap<>();
@@ -106,9 +124,9 @@ class CodingInterfaceImpl implements CodingInterface{
         while(i <= number) {
             if(number == 1)
                 return false;
-            if(i == number && number%i == 0)
+            if(i == number && number % i == 0)
                 count++;
-            else if(i != number && number%i == 0)
+            else if(i != number && number % i == 0)
                 count++;
             i++;
         }
@@ -174,9 +192,13 @@ class CodingInterfaceImpl implements CodingInterface{
      * @return
      */
     public boolean isPalindrome(String word) {
+
         if(word == null || word.length() == 0)
             return false;
         else {
+            // boolean isValid = Pattern.matches("[abc]", word);
+            word = word.replaceAll(" ", "").toLowerCase();
+            // System.out.println("Word -> " + word);
             int low = 0, high = word.length() - 1;
             while(low <= high) {
                 if(word.charAt(low) != word.charAt(high)) {

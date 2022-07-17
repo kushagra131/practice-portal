@@ -25,7 +25,7 @@ public class CountingSort {
 		
 		//modify the count[] by adding the previous counts
 		for(int i = 1; i < count.length; i++)
-			count[i] = count[i-1] + count[i];
+			count[i] = count[i] + count[i-1];
 		
 		System.out.println("Count[] -> " + Arrays.toString(count));
 		
@@ -44,13 +44,36 @@ public class CountingSort {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] array = {4,1,3,2,6,9,2,1,8,7,1};
+		int[] arr = {4,1,3,2,6,9,2,1,8,7,1};
 		
-		System.out.println("Array -> " + Arrays.toString(array));
+		System.out.println("Array -> " + Arrays.toString(arr));
 		CountingSort obj = new CountingSort();
-		obj.sort(array);
-		System.out.println("Sorted[] -> " + Arrays.toString(array));
+		//obj.sort(arr);
+		countSort(arr);
+		//System.out.println("Sorted[] -> " + Arrays.toString(arr));
 
+	}
+
+	private static int[] countSort(int[] arr) {
+		int min = Arrays.stream(arr).min().getAsInt();
+		int max = Arrays.stream(arr).max().getAsInt();
+
+		int[] count_array = new int[max + 1];
+		//System.out.println(count_array.length);
+
+		for(int i = 0; i < count_array.length; i++) {
+			if(count_array[i] != 0)
+				count_array[arr[i]] = count_array[arr[i]] + 1;
+			else
+				count_array[arr[i]] = 1;
+		}
+		System.out.println("count_arr -> " + Arrays.toString(count_array));
+
+		for(int i = 1; i < count_array.length; i++) {
+			count_array[i] = count_array[i] + count_array[i-1];
+		}
+		System.out.println("count_arr -> " + Arrays.toString(count_array));
+		return null;
 	}
 
 }

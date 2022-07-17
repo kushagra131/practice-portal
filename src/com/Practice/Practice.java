@@ -1,8 +1,6 @@
 package com.Practice;
 
-import javax.sound.midi.SysexMessage;
 import java.util.*;
-import java.util.function.Consumer;
 
 public class Practice {
     static String word = "Hello";
@@ -59,11 +57,11 @@ public class Practice {
                 maxHeap.add(arr[i]);
             }
         }
-        Iterator<Integer> itr = maxHeap.iterator();
-        while(itr.hasNext()) {
-            System.out.print(itr.next() + ", ");
-        }
-        System.out.println();
+//        Iterator<Integer> itr = maxHeap.iterator();
+//        while(itr.hasNext()) {
+//            System.out.print(itr.next() + ", ");
+//        }
+//        System.out.println();
         return maxHeap.peek();
     }
 
@@ -82,11 +80,11 @@ public class Practice {
                 minHeap.add(arr[i]);
             }
         }
-        Iterator itr = minHeap.iterator();
-        while(itr.hasNext()) {
-            System.out.print(itr.next() + ", ");
-        }
-        System.out.println();
+//        Iterator itr = minHeap.iterator();
+//        while(itr.hasNext()) {
+//            System.out.print(itr.next() + ", ");
+//        }
+//        System.out.println();
 
         for(int i = 1; i < k; i++)
             minHeap.poll();

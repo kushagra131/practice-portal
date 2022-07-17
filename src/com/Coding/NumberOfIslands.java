@@ -9,20 +9,8 @@ class NumberOfIslands {
         System.out.println("Number of Islands -> " + countIslands(map));
     }
 
-    private static void dfsForIslands(int[][] arr, int row, int col, boolean[][] visited) {
-        if(row < 0 || row >= arr.length || col < 0 || col >= arr[0].length || arr[row][col] != 1 || visited[row][col]) {
-            return;
-        }
-
-        visited[row][col] = true;
-        dfsForIslands(arr, row, col + 1, visited);
-        dfsForIslands(arr, row, col - 1, visited);
-        dfsForIslands(arr, row + 1, col, visited);
-        dfsForIslands(arr, row - 1, col, visited);
-    }
-
     private static int countIslands(int[][] arr) {
-        if(arr == null)
+        if(arr == null || arr.length == 0)
             return 0;
         else {
             int rows = arr.length;
@@ -34,13 +22,26 @@ class NumberOfIslands {
             for(int i = 0; i < rows; i++) {
                 for(int j = 0; j < cols; j++) {
                     if(arr[i][j] == 1 && !visited[i][j]) {
-                        dfsForIslands(arr, i, j, visited);
+                        checkNeighbours(arr, i, j, visited);
                         ++count;
                     }
                 }
             }
             return count;
         }
+    }
+
+    // DFS Traversal of Graph to check neighbours
+    private static void checkNeighbours(int[][] arr, int row, int col, boolean[][] visited) {
+        if(row < 0 || row >= arr.length || col < 0 || col >= arr[0].length || arr[row][col] != 1 || visited[row][col]) {
+            return;
+        }
+
+        visited[row][col] = true;
+        checkNeighbours(arr, row, col + 1, visited);
+        checkNeighbours(arr, row, col - 1, visited);
+        checkNeighbours(arr, row + 1, col, visited);
+        checkNeighbours(arr, row - 1, col, visited);
     }
 
 }
