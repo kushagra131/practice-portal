@@ -1,9 +1,5 @@
 package com.Coding;
 
-import java.util.Iterator;
-import java.util.Set;
-import java.util.TreeSet;
-
 public class Threading {
 
         public static void main(String str[]) {
