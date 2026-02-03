@@ -1,5 +1,6 @@
 package org.example.coding;
 
+
 public class Employee {
 
     private Long empId;
@@ -13,7 +14,6 @@ public class Employee {
         this.lastName = lastName;
         this.salary = salary;
     }
-
 
     public Long getEmpId() {
         return empId;
@@ -49,11 +49,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "empId=" + empId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", salary=" + salary +
-                '}';
+        return "Employee{" + "empId=" + empId + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", salary=" + salary + '}';
     }
 }

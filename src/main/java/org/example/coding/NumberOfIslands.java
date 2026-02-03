@@ -1,17 +1,23 @@
 package org.example.coding;
 
-class NumberOfIslands {
-    public static void main (String[] args) {
-        int[][] map = { {1, 1, 1, 1, 0, 1},
+public class NumberOfIslands {
+
+    public static void main(String[] args) {
+
+        int[][] array =
+                {
+                        {1, 1, 1, 1, 0, 1},
                         {1, 1, 0, 1, 0, 1},
                         {1, 1, 0, 0, 1, 0},
-                        {0, 0, 0, 0, 1, 0} };
-        System.out.println("Number of Islands -> " + countIslands(map));
+                        {0, 0, 0, 0, 1, 0}
+                };
+
+        System.out.println("Number of Islands -> " + countIslands(array));
     }
 
     private static int countIslands(int[][] arr) {
-        if(arr == null || arr.length == 0)
-            return 0;
+
+        if (arr == null || arr.length == 0) return 0;
         else {
             int rows = arr.length;
             int cols = arr[0].length;
@@ -19,9 +25,9 @@ class NumberOfIslands {
             boolean[][] visited = new boolean[rows][cols];
             int count = 0;
 
-            for(int i = 0; i < rows; i++) {
-                for(int j = 0; j < cols; j++) {
-                    if(arr[i][j] == 1 && !visited[i][j]) {
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    if (arr[i][j] == 1 && !visited[i][j]) {
                         checkNeighbours(arr, i, j, visited);
                         ++count;
                     }
@@ -33,7 +39,7 @@ class NumberOfIslands {
 
     // DFS Traversal of Graph to check neighbours
     private static void checkNeighbours(int[][] arr, int row, int col, boolean[][] visited) {
-        if(row < 0 || row >= arr.length || col < 0 || col >= arr[0].length || arr[row][col] != 1 || visited[row][col]) {
+        if (row < 0 || row >= arr.length || col < 0 || col >= arr[0].length || arr[row][col] != 1 || visited[row][col]) {
             return;
         }
 
