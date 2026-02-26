@@ -1,5 +1,4 @@
-package org.example.coding;
-
+package org.example.coding.practice.streams.domain;
 
 public class Employee {
 

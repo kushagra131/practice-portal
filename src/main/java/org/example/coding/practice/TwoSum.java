@@ -1,4 +1,4 @@
-package org.example.practice;
+package org.example.coding.practice;
 
 import java.util.Arrays;
 import java.util.HashMap;

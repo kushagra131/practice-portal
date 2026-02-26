@@ -1,4 +1,4 @@
-package org.example.coding;
+package org.example.coding.interview;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;

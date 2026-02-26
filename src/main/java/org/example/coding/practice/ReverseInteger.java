@@ -1,4 +1,4 @@
-package org.example.practice;
+package org.example.coding.practice;
 
 public class ReverseInteger {
 

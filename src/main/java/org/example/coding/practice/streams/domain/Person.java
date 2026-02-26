@@ -1,4 +1,4 @@
-package org.example.coding;
+package org.example.coding.practice.streams.domain;
 
 public class Person {
 
@@ -6,7 +6,7 @@ public class Person {
     private String lastName;
     private int age;
 
-    Person(String firstName, String lastName, int age) {
+    public Person(String firstName, String lastName, int age) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -39,10 +39,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person {" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                '}';
+        return "Person {" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", age=" + age + '}';
     }
 }
